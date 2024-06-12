@@ -7,11 +7,13 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 
-@app.before_first_request
+# Função para criar o banco de dados e as tabelas
 def create_tables():
-    db.create_all()
+    with app.app_context():
+        db.create_all()
 
-# Endpoints
+create_tables()
+
 @app.route('/api/enquetes', methods=['POST'])
 def criar_enquete():
     data = request.get_json()
