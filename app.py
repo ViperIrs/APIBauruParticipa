@@ -7,7 +7,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 
-# Função para criar o banco de dados e as tabelas
 def create_tables():
     with app.app_context():
         db.create_all()
